@@ -1,0 +1,243 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GPT AI Content Creator by BestWebSoft\n"
+"PO-Revision-Date: 2023-04-28 17:11+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: gpt-ai-content-creator.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"POT-Creation-Date: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-1: bws_menu\n"
+
+# automatic translation
+#: gpt-ai-content-creator.php:34 gpt-ai-content-creator.php:35
+#: includes/class-gptcntntcrtr-settings.php:80
+msgid "GPT AI Content Creator Settings"
+msgstr "Configuración del creador de contenido de IA de GPT"
+
+# automatic translation
+#: gpt-ai-content-creator.php:35 gpt-ai-content-creator.php:152
+#: gpt-ai-content-creator.php:195 gpt-ai-content-creator.php:209
+#: includes/class-gptcntntcrtr-settings.php:21
+msgid "Settings"
+msgstr "Ajustes"
+
+# automatic translation
+#: gpt-ai-content-creator.php:175
+msgid "Add Content with GPT"
+msgstr "Agregar contenido con GPT"
+
+# automatic translation
+#: gpt-ai-content-creator.php:176
+msgid "Please set a post title before generating content."
+msgstr "Establezca un título de publicación antes de generar contenido."
+
+# automatic translation
+#: gpt-ai-content-creator.php:177
+msgid ""
+"Please provide your API key before generating content on the plugin Settings "
+"page."
+msgstr ""
+"Proporcione su clave API antes de generar contenido en la página de "
+"configuración del complemento."
+
+# automatic translation
+#: gpt-ai-content-creator.php:211
+msgid "FAQ"
+msgstr "Preguntas más frecuentes"
+
+# automatic translation
+#: gpt-ai-content-creator.php:212
+msgid "Support"
+msgstr "Apoyo"
+
+# automatic translation
+#: gpt-ai-content-creator.php:272
+msgid "Something went wrong 2:"
+msgstr "Algo salió mal 2:"
+
+# automatic translation
+#: gpt-ai-content-creator.php:278
+msgid "Something went wrong. Error #:"
+msgstr "Algo salió mal. Error #:"
+
+# automatic translation
+#: gpt-ai-content-creator.php:312
+msgid "Error #:"
+msgstr "Error #:"
+
+# automatic translation
+#: gpt-ai-content-creator.php:326
+msgid ""
+"The model predicted a completion that begins with a stop sequence, resulting in "
+"no output. Consider adjusting your prompt (title)"
+msgstr ""
+"El modelo predijo una finalización que comienza con una secuencia de parada, lo "
+"que no genera ningún resultado. Considere ajustar su aviso (título)"
+
+# automatic translation
+#: gpt-ai-content-creator.php:334
+msgid "Something went wrong 5:"
+msgstr "Algo salió mal 5:"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:22
+msgid "Misc"
+msgstr "Varios"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:68
+msgid "Settings saved."
+msgstr "Ajustes guardados."
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:85
+msgid "API keys"
+msgstr "Claves API"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:91
+#, php-format
+msgid "Go to OpenAI and generate your API key. %1$s Get the API Keys %2$s"
+msgstr "Vaya a OpenAI y genere su clave API. %1$s Obtenga las claves API %2$s"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:100
+msgid "Max tokens"
+msgstr "Fichas máximas"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:104
+msgid ""
+"The temperature parameter controls the randomness and creativity of the model's "
+"responses. A higher temperature will result in more unpredictable and diverse "
+"responses, while a lower temperature will produce more conservative and "
+"predictable responses."
+msgstr ""
+"El parámetro de temperatura controla la aleatoriedad y la creatividad de las "
+"respuestas del modelo. Una temperatura más alta dará como resultado respuestas "
+"más impredecibles y diversas, mientras que una temperatura más baja producirá "
+"respuestas más conservadoras y predecibles."
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:109
+msgid "Temperature"
+msgstr "Temperatura"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:113
+msgid ""
+"The max tokens parameter sets the maximum number of tokens (words and "
+"punctuation marks) that the model is allowed to generate in its response. This "
+"can be used to control the length of the generated text."
+msgstr ""
+"El parámetro max tokens establece el número máximo de tokens (palabras y signos "
+"de puntuación) que el modelo puede generar en su respuesta. Esto se puede "
+"utilizar para controlar la longitud del texto generado."
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:118
+msgid "Presence penalty"
+msgstr "Penalización por presencia"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:122
+msgid ""
+"The presence penalty parameter penalizes the model for using certain words or "
+"phrases in its response. This can be used to encourage the model to generate "
+"more diverse and original responses."
+msgstr ""
+"El parámetro de penalización por presencia penaliza al modelo por usar ciertas "
+"palabras o frases en su respuesta. Esto se puede utilizar para alentar al modelo "
+"a generar respuestas más diversas y originales."
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:127
+msgid "Frequency penalty"
+msgstr "Penalización de frecuencia"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:131
+msgid ""
+"The frequency penalty parameter penalizes the model for repeating certain words "
+"or phrases in its response. This can be used to encourage the model to generate "
+"more varied and natural-sounding responses."
+msgstr ""
+"El parámetro de penalización de frecuencia penaliza al modelo por repetir "
+"ciertas palabras o frases en su respuesta. Esto se puede utilizar para animar al "
+"modelo a generar respuestas más variadas y que suenen más naturales."
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:136
+msgid "Best Of"
+msgstr "Mejor de"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:140
+msgid ""
+"The best of parameter controls how many of the model's generated responses are "
+"returned to the user. For example, setting best of to 3 will result in the model "
+"generating 3 different responses, and returning the one that it deems to be the "
+"best. This can be used to increase the likelihood of getting a high-quality "
+"response from the model."
+msgstr ""
+"El mejor de los parámetros controla cuántas de las respuestas generadas por el "
+"modelo se devuelven al usuario. Por ejemplo, establecer lo mejor de en 3 hará "
+"que el modelo genere 3 respuestas diferentes y devuelva la que considere mejor. "
+"Esto se puede usar para aumentar la probabilidad de obtener una respuesta de "
+"alta calidad del modelo."
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:145
+msgid "Models"
+msgstr "Modelos"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:155
+msgid ""
+"The model parameter refers to the specific version of the GPT-3 architecture "
+"that is being used. There are several different versions of the GPT-3 model "
+"available, each with different levels of complexity and computational power."
+msgstr ""
+"El parámetro del modelo hace referencia a la versión específica de la "
+"arquitectura GPT-3 que se está utilizando. Hay varias versiones diferentes del "
+"modelo GPT-3 disponibles, cada una con diferentes niveles de complejidad y "
+"potencia computacional."
+
+# automatic translation
+#. Plugin Name of the plugin/theme
+msgid "GPT AI Content Creator by BestWebSoft"
+msgstr "Creador de contenido GPT AI de BestWebSoft"
+
+# automatic translation
+#. Plugin URI of the plugin/theme
+msgid "https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/"
+msgstr "https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/"
+
+# automatic translation
+#. Description of the plugin/theme
+msgid "Generate content with gpt-ai-content-creator"
+msgstr "Genera contenido con gpt-ai-content-creator"
+
+# automatic translation
+#. Author of the plugin/theme
+msgid "BestWebSoft"
+msgstr "BestWebSoft"
+
+# automatic translation
+#. Author URI of the plugin/theme
+msgid "https://bestwebsoft.com/"
+msgstr "https://bestwebsoft.com/"

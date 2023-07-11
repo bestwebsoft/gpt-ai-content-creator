@@ -1,0 +1,238 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GPT AI Content Creator by BestWebSoft\n"
+"PO-Revision-Date: 2023-04-28 17:11+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: gpt-ai-content-creator.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"POT-Creation-Date: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-1: bws_menu\n"
+
+# automatic translation
+#: gpt-ai-content-creator.php:34 gpt-ai-content-creator.php:35
+#: includes/class-gptcntntcrtr-settings.php:80
+msgid "GPT AI Content Creator Settings"
+msgstr "GPT AI コンテンツ作成者の設定"
+
+# automatic translation
+#: gpt-ai-content-creator.php:35 gpt-ai-content-creator.php:152
+#: gpt-ai-content-creator.php:195 gpt-ai-content-creator.php:209
+#: includes/class-gptcntntcrtr-settings.php:21
+msgid "Settings"
+msgstr "設定"
+
+# automatic translation
+#: gpt-ai-content-creator.php:175
+msgid "Add Content with GPT"
+msgstr "GPT でコンテンツを追加する"
+
+# automatic translation
+#: gpt-ai-content-creator.php:176
+msgid "Please set a post title before generating content."
+msgstr "コンテンツを生成する前に投稿タイトルを設定してください。"
+
+# automatic translation
+#: gpt-ai-content-creator.php:177
+msgid ""
+"Please provide your API key before generating content on the plugin Settings "
+"page."
+msgstr ""
+"プラグイン設定ページでコンテンツを生成する前に、API キーを提供してください。"
+
+# automatic translation
+#: gpt-ai-content-creator.php:211
+msgid "FAQ"
+msgstr "よくある質問"
+
+# automatic translation
+#: gpt-ai-content-creator.php:212
+msgid "Support"
+msgstr "サポート"
+
+# automatic translation
+#: gpt-ai-content-creator.php:272
+msgid "Something went wrong 2:"
+msgstr "問題が発生しました 2:"
+
+# automatic translation
+#: gpt-ai-content-creator.php:278
+msgid "Something went wrong. Error #:"
+msgstr "エラーが発生しました。エラー ＃："
+
+# automatic translation
+#: gpt-ai-content-creator.php:312
+msgid "Error #:"
+msgstr "エラー ＃："
+
+# automatic translation
+#: gpt-ai-content-creator.php:326
+msgid ""
+"The model predicted a completion that begins with a stop sequence, resulting in "
+"no output. Consider adjusting your prompt (title)"
+msgstr ""
+"モデルは停止シーケンスで始まる完了を予測したため、出力はありませんでした。プロン"
+"プト (タイトル) を調整することを検討してください"
+
+# automatic translation
+#: gpt-ai-content-creator.php:334
+msgid "Something went wrong 5:"
+msgstr "問題が発生しました 5:"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:22
+msgid "Misc"
+msgstr "その他"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:68
+msgid "Settings saved."
+msgstr "保存された設定。"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:85
+msgid "API keys"
+msgstr "API キー"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:91
+#, php-format
+msgid "Go to OpenAI and generate your API key. %1$s Get the API Keys %2$s"
+msgstr "OpenAI に移動し、API キーを生成します。 %1$s API キーを取得 %2$s"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:100
+msgid "Max tokens"
+msgstr "最大トークン"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:104
+msgid ""
+"The temperature parameter controls the randomness and creativity of the model's "
+"responses. A higher temperature will result in more unpredictable and diverse "
+"responses, while a lower temperature will produce more conservative and "
+"predictable responses."
+msgstr ""
+"温度パラメーターは、モデルの応答のランダム性と創造性を制御します。温度が高いほ"
+"ど、より予測不可能で多様な反応が生じますが、温度が低いほど、より保守的で予測可能"
+"な反応が生じます。"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:109
+msgid "Temperature"
+msgstr "温度"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:113
+msgid ""
+"The max tokens parameter sets the maximum number of tokens (words and "
+"punctuation marks) that the model is allowed to generate in its response. This "
+"can be used to control the length of the generated text."
+msgstr ""
+"Max tokens パラメーターは、モデルが応答で生成できるトークン (単語と句読点) の最大"
+"数を設定します。これは、生成されたテキストの長さを制御するために使用できます。"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:118
+msgid "Presence penalty"
+msgstr "プレゼンスペナルティ"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:122
+msgid ""
+"The presence penalty parameter penalizes the model for using certain words or "
+"phrases in its response. This can be used to encourage the model to generate "
+"more diverse and original responses."
+msgstr ""
+"プレゼンス ペナルティ パラメーターは、応答で特定の単語またはフレーズを使用するモ"
+"デルにペナルティを課します。これを使用して、モデルがより多様で独創的な応答を生成"
+"するように促すことができます。"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:127
+msgid "Frequency penalty"
+msgstr "周波数ペナルティ"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:131
+msgid ""
+"The frequency penalty parameter penalizes the model for repeating certain words "
+"or phrases in its response. This can be used to encourage the model to generate "
+"more varied and natural-sounding responses."
+msgstr ""
+"頻度ペナルティ パラメーターは、応答で特定の単語またはフレーズを繰り返すモデルにペ"
+"ナルティを課します。これを使用して、モデルがより多様で自然な応答を生成するように"
+"促すことができます。"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:136
+msgid "Best Of"
+msgstr "最高"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:140
+msgid ""
+"The best of parameter controls how many of the model's generated responses are "
+"returned to the user. For example, setting best of to 3 will result in the model "
+"generating 3 different responses, and returning the one that it deems to be the "
+"best. This can be used to increase the likelihood of getting a high-quality "
+"response from the model."
+msgstr ""
+"最高のパラメーターは、モデルの生成された応答のうちユーザーに返される数を制御しま"
+"す。たとえば、best of を 3 に設定すると、モデルは 3 つの異なる応答を生成し、最良"
+"と判断した応答を返します。これを使用して、モデルから高品質の応答が得られる可能性"
+"を高めることができます。"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:145
+msgid "Models"
+msgstr "モデル"
+
+# automatic translation
+#: includes/class-gptcntntcrtr-settings.php:155
+msgid ""
+"The model parameter refers to the specific version of the GPT-3 architecture "
+"that is being used. There are several different versions of the GPT-3 model "
+"available, each with different levels of complexity and computational power."
+msgstr ""
+"モデル パラメータは、使用されている GPT-3 アーキテクチャの特定のバージョンを参照"
+"します。 GPT-3 モデルにはいくつかの異なるバージョンがあり、それぞれ複雑さと計算能"
+"力のレベルが異なります。"
+
+# automatic translation
+#. Plugin Name of the plugin/theme
+msgid "GPT AI Content Creator by BestWebSoft"
+msgstr "BestWebSoftによるGPT AIコンテンツクリエーター"
+
+# automatic translation
+#. Plugin URI of the plugin/theme
+msgid "https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/"
+msgstr "https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/"
+
+# automatic translation
+#. Description of the plugin/theme
+msgid "Generate content with gpt-ai-content-creator"
+msgstr "gpt-ai-content-creator でコンテンツを生成する"
+
+# automatic translation
+#. Author of the plugin/theme
+msgid "BestWebSoft"
+msgstr "BestWebSoft"
+
+# automatic translation
+#. Author URI of the plugin/theme
+msgid "https://bestwebsoft.com/"
+msgstr "https://bestwebsoft.com/"

@@ -3,7 +3,7 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: plugin, wordpress, gpt, ai, chatgpt, bws, content, artificial intelligence, generate content
 Requires at least: 5.6
-Tested up to: 6.2
+Tested up to: 6.6
 Requires PHP: 5.6
 Stable tag: 1.1.0
 License: GPLv3 or later
@@ -105,6 +105,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog == 
 
+= V1.1.1 - 03.10.2024 = 
+* Update : All functionality for wordpress 6.6 was updated.
+* Bugifx : Fixed button in Gutenberg.
+
 = V1.1.0 - 04.07.2023 = 
 * Update : Plugin settings updated.
 
@@ -112,6 +116,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Update : All functionality for wordpress 6.2 was updated.
 
 == Upgrade Notice ==
+
+= V1.1.1 =
+* Bugs fixed
 
 = V1.1.0 =
 * Settings updated

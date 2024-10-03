@@ -88,13 +88,23 @@
 				if ( ! document.body.classList.contains( 'widgets-php' ) ) {
 					setTimeout(
 						function() {
-							e = $( '.edit-post-header__toolbar' );
-							if ( e ) {
-								var t = document.createElement( 'div' );
+							e = document.querySelector(".editor-header__toolbar");
+							if (e) {
+								var t = document.createElement("div");
 								if ( element.createRoot ) {
-									e.append( t ), element.createRoot( t ).render( element.createElement( createButton, null ) )
+									e.prepend( t ), element.createRoot( t ).render( element.createElement( createButton, null ) )
 								} else {
-									e.append( t ), Object( element.render )( element.createElement( createButton , null ), t )
+									e.prepend( t ), Object( element.render )( element.createElement( createButton , null ), t )
+								}
+							} else {
+								e = document.querySelector(".edit-post-header__toolbar");
+								if (e) {
+									var t = document.createElement("div");
+									if ( element.createRoot ) {
+										e.append( t ), element.createRoot( t ).render( element.createElement( createButton, null ) )
+									} else {
+										e.append( t ), Object( element.render )( element.createElement( createButton , null ), t )
+									}
 								}
 							}
 						},

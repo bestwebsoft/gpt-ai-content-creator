@@ -5,6 +5,7 @@
 
 if ( ! class_exists( 'Gptcntntcrtr_Settings_Tabs' ) ) {
 	class Gptcntntcrtr_Settings_Tabs extends Bws_Settings_Tabs {
+		private $models;
 		/**
 		 * Constructor.
 		 *
@@ -42,6 +43,14 @@ if ( ! class_exists( 'Gptcntntcrtr_Settings_Tabs' ) ) {
 					'link_pn'            => '1061',
 				)
 			);
+			$this->models = array(
+				'gpt-4o',
+				'gpt-4',
+				'gpt-4o-mini',
+				'gpt-3.5-turbo-instruct',
+				'davinci-002',
+				'gpt-4-turbo'
+			);
 		}
 
 		/**
@@ -63,7 +72,7 @@ if ( ! class_exists( 'Gptcntntcrtr_Settings_Tabs' ) ) {
 				$this->options['presence_penalty']  = isset( $_POST['gptcntntcrtr_presence_penalty'] ) ? floatval( $_POST['gptcntntcrtr_presence_penalty'] ) : 0;
 				$this->options['frequency_penalty'] = isset( $_POST['gptcntntcrtr_frequency_penalty'] ) ? floatval( $_POST['gptcntntcrtr_frequency_penalty'] ) : 0;
 				$this->options['best_of']           = isset( $_POST['gptcntntcrtr_best_of'] ) ? floatval( $_POST['gptcntntcrtr_best_of'] ) : 1;
-				$this->options['models']            = isset( $_POST['gptcntntcrtr_models'] ) && in_array( sanitize_text_field( wp_unslash( $_POST['gptcntntcrtr_models'] ) ), array( 'text-davinci-003', 'text-davinci-002', 'text-curie-001', 'text-babbage-001', 'text-ada-001' ) ) ? sanitize_text_field( wp_unslash( $_POST['gptcntntcrtr_models'] ) ) : 'text-davinci-003';
+				$this->options['models']            = isset( $_POST['gptcntntcrtr_models'] ) && in_array( sanitize_text_field( wp_unslash( $_POST['gptcntntcrtr_models'] ) ), $this->models ) ? sanitize_text_field( wp_unslash( $_POST['gptcntntcrtr_models'] ) ) : 'gpt-4o';
 
 				$message = __( 'Settings saved.', 'gpt-ai-content-creator' );
 
@@ -78,6 +87,8 @@ if ( ! class_exists( 'Gptcntntcrtr_Settings_Tabs' ) ) {
 		 */
 		public function tab_settings() { 
 			global $gptcntntcrtr_plugin_info, $wp_version;
+
+			sort( $this->models );
 			?>
 			<h3 class="bws_tab_label"><?php esc_html_e( 'GPT AI Content Creator Settings', 'gpt-ai-content-creator' ); ?></h3>
 			<?php $this->help_phrase(); ?>
@@ -152,11 +163,13 @@ if ( ! class_exists( 'Gptcntntcrtr_Settings_Tabs' ) ) {
 					<th><?php esc_html_e( 'Models', 'gpt-ai-content-creator' ); ?></th>
 					<td>
 						<select name="gptcntntcrtr_models">
-							<option value="text-davinci-003" <?php selected( $this->options['models'], 'text-davinci-003' ); ?>>text-davinci-003</option>
-							<option value="text-davinci-002" <?php selected( $this->options['models'], 'text-davinci-002' ); ?>>text-davinci-002</option>
-							<option value="text-curie-001" <?php selected( $this->options['models'], 'text-curie-001' ); ?>>text-curie-001</option>
-							<option value="text-babbage-001" <?php selected( $this->options['models'], 'text-babbage-001' ); ?>>text-babbage-001</option>
-							<option value="text-ada-001" <?php selected( $this->options['models'], 'text-ada-001' ); ?>>text-ada-001</option>
+							<?php
+								foreach( $this->models as $model ) {
+									?>
+									<option value="<?php echo $model; ?>" <?php selected( $this->options['models'], $model ); ?>><?php echo $model; ?></option>
+								<?php
+							}
+							?>
 						</select>
 						<div class="bws_help_box dashicons dashicons-editor-help">
 							<div class="bws_hidden_help_text" style="min-width: 200px;"><?php esc_html_e( 'The model parameter refers to the specific version of the GPT-3 architecture that is being used. There are several different versions of the GPT-3 model available, each with different levels of complexity and computational power.', 'gpt-ai-content-creator' ); ?></div>
@@ -164,45 +177,47 @@ if ( ! class_exists( 'Gptcntntcrtr_Settings_Tabs' ) ) {
 					</td>
 				</tr>
 			</table>
-			<div class="bws_pro_version_bloc pdfprnt-pro-feature">
-				<div class="bws_pro_version_table_bloc">
-					<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="Close"></button>
-						<div class="bws_table_bg"></div>
-						<div class="bws_pro_version">
-						<table class="form-table">
-							<th colspan="2" class="th_bws_tab_sub">
-								<div class="bws_tab_sub_label"><?php esc_html_e( 'Settings for Image', 'gpt-ai-content-creator' ); ?></div>
-							</th>
-							<tr>
-								<th><?php esc_html_e( 'Nubmer', 'gpt-ai-content-creator' ); ?></th>
-								<td>
-									<input class="small-text" type="number" value="<?php echo esc_attr( $this->options['image_number'] ); ?>" min="1" max="10" step="1" />
-									<div class="bws_help_box dashicons dashicons-editor-help">
-										<div class="bws_hidden_help_text" style="min-width: 200px;"><?php esc_html_e( 'The number of images to generate', 'gpt-ai-content-creator' ); ?></div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th><?php esc_html_e( 'Size', 'gpt-ai-content-creator' ); ?></th>
-								<td>
-									<select>
-										<option value="256x256" <?php selected( $this->options['image_size'], '256x256' ); ?>>256x256</option>
-										<option value="512x512" <?php selected( $this->options['image_size'], '512x512' ); ?>>512x512</option>
-										<option value="1024x1024" <?php selected( $this->options['image_size'], '1024x1024' ); ?>>1024x1024</option>
-									</select>
-									<div class="bws_help_box dashicons dashicons-editor-help">
-										<div class="bws_hidden_help_text" style="min-width: 200px;"><?php esc_html_e( 'The size of the generated images', 'gpt-ai-content-creator' ); ?></div>
-									</div>
-								</td>
-							</tr>
-						</table>
+			<?php if ( ! $this->hide_pro_tabs ) { ?>
+				<div class="bws_pro_version_bloc gptcntntcrtr-pro-feature">
+					<div class="bws_pro_version_table_bloc">
+						<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="Close"></button>
+							<div class="bws_table_bg"></div>
+							<div class="bws_pro_version">
+							<table class="form-table">
+								<th colspan="2" class="th_bws_tab_sub">
+									<div class="bws_tab_sub_label"><?php esc_html_e( 'Settings for Image', 'gpt-ai-content-creator' ); ?></div>
+								</th>
+								<tr>
+									<th><?php esc_html_e( 'Nubmer', 'gpt-ai-content-creator' ); ?></th>
+									<td>
+										<input class="small-text" type="number" value="<?php echo esc_attr( $this->options['image_number'] ); ?>" min="1" max="10" step="1" />
+										<div class="bws_help_box dashicons dashicons-editor-help">
+											<div class="bws_hidden_help_text" style="min-width: 200px;"><?php esc_html_e( 'The number of images to generate', 'gpt-ai-content-creator' ); ?></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th><?php esc_html_e( 'Size', 'gpt-ai-content-creator' ); ?></th>
+									<td>
+										<select>
+											<option value="256x256" <?php selected( $this->options['image_size'], '256x256' ); ?>>256x256</option>
+											<option value="512x512" <?php selected( $this->options['image_size'], '512x512' ); ?>>512x512</option>
+											<option value="1024x1024" <?php selected( $this->options['image_size'], '1024x1024' ); ?>>1024x1024</option>
+										</select>
+										<div class="bws_help_box dashicons dashicons-editor-help">
+											<div class="bws_hidden_help_text" style="min-width: 200px;"><?php esc_html_e( 'The size of the generated images', 'gpt-ai-content-creator' ); ?></div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="bws_pro_version_tooltip">
+						<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/?k=61793eecd9fc77083240e03cd1b81e89&pn=1061&v=<?php echo esc_attr( $gptcntntcrtr_plugin_info['Version'] ); ?>&wp_v=<?php echo esc_attr( $wp_version ); ?>" target="_blank" title="GPT AI Content Creator"><?php esc_html_e( 'Upgrade to Pro', 'gpt-ai-content-creator' ); ?></a>
+						<div class="clear"></div>
 					</div>
 				</div>
-				<div class="bws_pro_version_tooltip">
-					<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/?k=61793eecd9fc77083240e03cd1b81e89&pn=1061&v=<?php echo esc_attr( $gptcntntcrtr_plugin_info['Version'] ); ?>&wp_v=<?php echo esc_attr( $wp_version ); ?>" target="_blank" title="GPT AI Content Creator"><?php esc_html_e( 'Upgrade to Pro', 'gpt-ai-content-creator' ); ?></a>
-					<div class="clear"></div>
-				</div>
-			</div>
+			<?php } ?>
 			<?php wp_nonce_field( 'gptcntntcrtr_action', 'gptcntntcrtr_nonce_field' ); ?>
 			<?php
 		}

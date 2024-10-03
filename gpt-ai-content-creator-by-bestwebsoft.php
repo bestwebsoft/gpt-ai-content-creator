@@ -1,12 +1,12 @@
 <?php
 /**
 Plugin Name: GPT AI Content Creator by BestWebSoft
-Plugin URI: https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/
+Plugin URI: https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator-by-bestwebsoft/
 Description: Generate content with GPT AI Content Creator
 Author: BestWebSoft
 Text Domain: gpt-ai-content-creator
 Domain Path: /languages
-Version: 1.1.0
+Version: 1.1.1
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
  */
@@ -133,7 +133,7 @@ if ( ! function_exists( 'gptcntntcrtr_get_options_default' ) ) {
 			'display_settings_notice' => 1,
 			'suggest_feature_banner'  => 1,
 			/* end deneral options */
-			'models'                  => 'text-davinci-003',
+			'models'                  => 'gpt-3.5-turbo-instruct',
 			'max_tokens'              => 1500,
 			'temperature'             => 1,
 			'number'                  => 1,
@@ -177,7 +177,8 @@ if ( ! function_exists( 'gptcntntcrtr_admin_head' ) ) {
 			bws_plugins_include_codemirror();
 		} elseif ( is_admin() ) {
 			wp_enqueue_style( 'gptcntntcrtr_stylesheet', plugins_url( 'css/admin-style.css', __FILE__ ), false, $gptcntntcrtr_plugin_info['Version'] );
-			wp_enqueue_script( 'gptcntntcrtr_gutenberg_script', plugins_url( 'js/gutenberg-script.js', __FILE__ ), array( 'jquery', 'code-editor', 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-util', 'wp-plugins', 'wp-edit-post', 'wp-i18n', 'wp-api' ), true, $gptcntntcrtr_plugin_info['Version'] );
+			wp_enqueue_script( 'gptcntntcrtr_gutenberg_script', plugins_url( 'js/gutenberg-script.js?v=2', __FILE__ ), array( 'jquery', 'code-editor', 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-util', 'wp-plugins', 'wp-edit-post', 'wp-i18n', 'wp-api' ), true, $gptcntntcrtr_plugin_info['Version'] );
+			wp_enqueue_script( 'gptcntntcrtr_classic_script', plugins_url( 'js/classic-script.js', __FILE__ ), array( 'jquery' ), true, $gptcntntcrtr_plugin_info['Version'] );
 			wp_localize_script(
 				'gptcntntcrtr_gutenberg_script',
 				'gptcntntcrtr_vars',
@@ -191,6 +192,12 @@ if ( ! function_exists( 'gptcntntcrtr_admin_head' ) ) {
 				)
 			);
 		}
+	}
+}
+
+if ( ! function_exists( 'gptcntntcrtr_add_button' ) ) {
+	function gptcntntcrtr_add_button() {
+			echo '<a href="#" class="button gptcntntcrtr-button gptcntntcrtr-text-button">' . esc_html__( 'Add Content with GPT', 'gpt-ai-content-creator' ) . ' <svg width="24" height="24" class="hidden" style="vertical-align: bottom;padding-bottom: 4px;"><path d="M2 12C2 6.47715 6.47715 2 12 2V5C8.13401 5 5 8.13401 5 12H2Z" fill="#000" style="opacity: 0.5" /></svg></a>';
 	}
 }
 
@@ -220,7 +227,7 @@ if ( ! function_exists( 'gptcntntcrtr_links' ) ) {
 			if ( ! is_network_admin() ) {
 				$links[] = '<a href="admin.php?page=gpt-ai-content-creator.php">' . __( 'Settings', 'gpt-ai-content-creator' ) . '</a>';
 			}
-			$links[] = '<a href="https://wordpress.org/plugins/gpt-ai-content-creator/faq/" target="_blank">' . __( 'FAQ', 'gpt-ai-content-creator' ) . '</a>';
+			$links[] = '<a href="https://wordpress.org/plugins/gpt-ai-content-creator-by-bestwebsoft/faq/" target="_blank">' . __( 'FAQ', 'gpt-ai-content-creator' ) . '</a>';
 			$links[] = '<a href="https://support.bestwebsoft.com">' . __( 'Support', 'gpt-ai-content-creator' ) . '</a>';
 		}
 		return $links;
@@ -250,37 +257,91 @@ if ( ! function_exists( 'gptcntntcrtr_request' ) ) {
 		if ( empty( $gptcntntcrtr_options['secret_key'] ) ) {
 			$error_content = esc_html__( 'Please provide your API key before generating content on the plugin Settings page.', 'gpt-ai-content-creator' );
 		} else {
-			$request_body = array(
-				'prompt'            => $prompt,
-				'max_tokens'        => $gptcntntcrtr_options['max_tokens'],
-				'temperature'       => $gptcntntcrtr_options['temperature'],
-				'n'                 => $gptcntntcrtr_options['number'],
-				'presence_penalty'  => $gptcntntcrtr_options['presence_penalty'],
-				'frequency_penalty' => $gptcntntcrtr_options['frequency_penalty'],
-				'best_of'           => $gptcntntcrtr_options['best_of'],
-				'stream'            => false,
-				'stop'              => null,
-			);
-
-			$postfields = wp_json_encode( $request_body );
-
 			try {
-				$response = wp_remote_post(
-					'https://api.openai.com/v1/engines/' . $gptcntntcrtr_options['models'] . '/completions',
-					array(
-						'method'      => 'POST',
-						'timeout'     => 45,
-						'redirection' => 5,
-						'httpversion' => '1.0',
-						'headers'     => array(
-							'Content-Type'  => 'application/json',
-							'Authorization' => 'Bearer ' . $gptcntntcrtr_options['secret_key'],
+				if ( in_array( $gptcntntcrtr_options['models'], array( 'gpt-3.5-turbo-instruct', 'davinci-002' ) ) ) {
+					$request_body = array(
+						'model'             => $gptcntntcrtr_options['models'],
+						'prompt'            => $prompt,
+						'max_tokens'        => $gptcntntcrtr_options['max_tokens'],
+						'temperature'       => $gptcntntcrtr_options['temperature'],
+						'n'                 => $gptcntntcrtr_options['number'],
+						'presence_penalty'  => $gptcntntcrtr_options['presence_penalty'],
+						'frequency_penalty' => $gptcntntcrtr_options['frequency_penalty'],
+						'best_of'           => $gptcntntcrtr_options['best_of'],
+						'stream'            => false,
+						'stop'              => null,
+					);
+
+					$response = wp_remote_post(
+						'https://api.openai.com/v1/completions',
+						array(
+							'method'      => 'POST',
+							'timeout'     => 45,
+							'redirection' => 5,
+							'httpversion' => '1.0',
+							'headers'     => array(
+								'Content-Type'  => 'application/json',
+								'Authorization' => 'Bearer ' . $gptcntntcrtr_options['secret_key'],
+							),
+							'body'        => wp_json_encode( $request_body ),
+						)
+					);
+				} else {
+					$request_body = array(
+						//'promt'            => utf8_encode( $promt ),
+						'max_tokens'        => $gptcntntcrtr_options['max_tokens'],
+						'temperature'       => $gptcntntcrtr_options['temperature'],
+						'n'                 => $gptcntntcrtr_options['number'],
+						'presence_penalty'  => $gptcntntcrtr_options['presence_penalty'],
+						'frequency_penalty' => $gptcntntcrtr_options['frequency_penalty'],
+						'stream'            => false,
+						'stop'              => null,
+						'model'             => $gptcntntcrtr_options['models'],
+						'messages'          => array(
+							array(
+								'role'    => 'system', 
+								'content' => 'Ask me anything.'
+							),
+							array(
+								'role'    => 'user',
+								'content' => $prompt
+							)				
 						),
-						'body'        => wp_json_encode( $request_body ),
-					)
-				);
+								
+					);
+
+					$response = wp_remote_post(
+						'https://api.openai.com/v1/chat/completions',
+						array(
+							'method'      => 'POST',
+							'timeout'     => 45,
+							'redirection' => 5,
+							'httpversion' => '1.0',
+							'headers'     => array(
+								'Content-Type'  => 'application/json',
+								'Authorization' => 'Bearer ' . $gptcntntcrtr_options['secret_key'],
+							),
+							'body'        => wp_json_encode( $request_body ),
+						)
+					);
+				}
 				if ( ( ! is_wp_error( $response ) ) && ( 200  === wp_remote_retrieve_response_code( $response ) ) ) {
-					$response_content = $response['body'];
+					if ( in_array( $gptcntntcrtr_options['models'], array( 'gpt-3.5-turbo-instruct', 'davinci-002' ) ) ) {
+						$response_content = $response['body'];
+					} else {
+						$response = json_decode( $response['body'], true );
+						if ( json_last_error() === JSON_ERROR_NONE ) {
+							if ( ! empty( $response['choices'][0]['message']['content'] ) ) {
+								$response_content =	wp_json_encode( array(
+									'choices' => array(
+										array(
+											'text' => $response['choices'][0]['message']['content']
+										)
+									)
+								) );
+							}
+						}
+					}
 				} elseif ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 					if ( is_wp_error( $response ) ) {
 						$error_message = $response->get_error_message();
@@ -317,7 +378,7 @@ if ( ! function_exists( 'gptcntntcrtr_plugin_banner' ) ) {
 if ( ! function_exists( 'gptcntntcrtr_ajax_callback' ) ) {
 	function gptcntntcrtr_ajax_callback() {
 		check_ajax_referer( 'gptcntntcrtr-ajax-nonce', 'security' );
-		if ( isset( $_POST['is_gutenberg'] ) && 'true' === $_POST['is_gutenberg'] && ! empty( $_POST['post_title'] ) ) {
+		if ( isset( $_POST['is_gutenberg'] ) && ( 'true' === $_POST['is_gutenberg'] || 'false' === $_POST['is_gutenberg'] ) && ! empty( $_POST['post_title'] ) ) {
 			$result = gptcntntcrtr_request( sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) );
 			if ( empty( $result['error'] ) ) {
 				$response = json_decode( $result['response'], true );
@@ -397,6 +458,7 @@ add_action( 'admin_init', 'gptcntntcrtr_admin_init' );
 /* Adding stylesheets */
 add_action( 'wp_enqueue_scripts', 'gptcntntcrtr_admin_head' );
 add_action( 'admin_enqueue_scripts', 'gptcntntcrtr_admin_head' );
+add_action( 'media_buttons', 'gptcntntcrtr_add_button' );
 
 /* Additional links on the plugin page */
 add_filter( 'plugin_action_links', 'gptcntntcrtr_action_links', 10, 2 );
